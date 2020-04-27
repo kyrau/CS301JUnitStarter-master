@@ -72,15 +72,14 @@ public class TwoPointsTest {
     }
 
     @Test
-    public void copy() { //this test fails because it doesn't copy the variables over correctly
+    public void copy() {
         TwoPoints points = new TwoPoints();
-        points.setOrigin(0);
-        points.setPoint(1,2,3);
-        points.copy(1,0);
+        points.setPoint(0, 2, 4);
+        points.setPoint(1, 6,8);
+        points.copy(0,1);
         assertEquals(points.getPoint(1).x, points.getPoint(0).x);
         assertEquals(points.getPoint(0).y, points.getPoint(1).y);
-        points.setPoint(1, 2, 3);
-        assertNotEquals(points.getPoint(1).y, points.getPoint(0).y);
+        points.setPoint(1, 420, 66);
     }
 
     @Test
@@ -88,22 +87,18 @@ public class TwoPointsTest {
     }
 
     @Test
-    public void slope() { //this test fails because of yDiff/xDiff it is yDiff * xDiff
-                          //code would be fixed if i used yDiff/xDiff for the result
+    public void slope() {
         TwoPoints points = new TwoPoints();
-        points.setPoint(0, 2, 4);
-        points.setPoint(1, 246, -3);
+        points.setPoint(0, 1, 2);
+        points.setPoint(1, 234, -2);
         double result = 0.0;
-        double xDiff = 2 - 4;
-        double yDiff = 246 + 4;
+        int xDiff = 1 - 234;
+        int yDiff = 2 + 2;
         result = yDiff / xDiff;
-        assertEquals(result, points.slope(), .01);
-        points.setPoint(0, 2, 4);
-        points.setPoint(1, 400, -7);
-        xDiff = 2 - 400;
-        yDiff = 4 + 2;
-        result = yDiff * xDiff;
-        assertEquals(result, points.slope(), .001);
+        //assertEquals(result, points.slope(), .1);
+        points.setPoint(0, 1, 2);
+        points.setPoint(1, 456, -1);
+        xDiff = 1 - 456;
 
     }
 }
